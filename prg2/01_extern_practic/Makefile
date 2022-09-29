@@ -1,8 +1,26 @@
-program : compile-main.o compile-func.o 
-	gcc -o program compile-main.o compile-func.o 
-	
-compile-main.o : compile-main.c 
-	gcc -c compile-main.c 
+# 各種変数の設定
+CC = gcc 
+RM = /bin/rm -f
+DEBUG = -g
+LIBS = -lm
+CFLAGS = -O -Wall ${DEBUG} 
+LDFLAGS = 
 
-compile-func.o : compile-func.c 
-	gcc -c compile-func.c
+# オブジェクトファイル名 (のリスト) 
+# 実行ファイル名 (のリスト) 
+OBJS = compile-main.o compile-func.o 
+PROGS = program 
+
+# make all のトップレベル
+all : ${PROGS} 
+
+program : ${OBJS} 
+	${CC} ${LDFLAGS}-o program ${OBJS} ${LIBS} 
+
+.c.o :
+	${CC} ${CFLAGS}-c $< 
+
+# 「make clean」と入力すると「.o」や「~ で終わるファイル」が消去される
+.PHONY : clean 
+clean: 
+	$(RM) $(OBJS) *~
