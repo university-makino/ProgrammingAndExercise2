@@ -20,6 +20,27 @@ int main(int argc, const char *argv[])
         }
     }
 
+    //bubble sort
+    for (int i = 0; i < 20; i++){
+        for (int j = 0; j < 19; j++){
+            if (list[j] > list[j + 1]){
+                int tmp = list[j];
+                list[j] = list[j + 1];
+                list[j + 1] = tmp;
+            }
+        }
+    }
+
+    printf("\n");
+
+    for (int i = 0; i < 20; i++){
+        printf("%02d ", list[i]);
+
+        if (i % 5 == 4){
+            printf("\n");
+        }
+    }
+
 
 
     return 0;
