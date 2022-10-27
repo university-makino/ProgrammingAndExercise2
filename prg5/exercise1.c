@@ -19,20 +19,30 @@ int sort_str_ptr(char **str1, char **str2){
     return 0;
 }
 
+int bubble_sort_str_ptr(char **str, int size){
+    for (int i = 0; i < size; i++){
+        for (int j = 0; j < size - 1; j++){
+            sort_str_ptr(&str[j], &str[j+1]);
+        }
+    }
+    return 0;
+}
+
 int main(int argc, const char* argv[]){
 
-    char *a = "abcde "; 
-    char *b = "xyz";
+    char *list[] = {"hoge","abc","xy","fugagaga"};
 
     printf("=== old ==== \n");
-    printf("a = %s\n", a);
-    printf("b = %s\n", b);
+    for(int i = 0; i < 4; i++){
+        printf("list[%d] = %s\n", i, list[i]);
+    }
 
-    sort_str_ptr(&a,&b);
+    bubble_sort_str_ptr(list, 4);
 
     printf("=== new ==== \n");
-    printf("a = %s\n", a);
-    printf("b = %s\n", b);
+    for(int i = 0; i < 4; i++){
+        printf("list[%d] = %s\n", i, list[i]);
+    }
 
 
     return 0;
