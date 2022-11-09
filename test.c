@@ -1,24 +1,14 @@
 #include <stdio.h>
-enum animal
-{
-    DOG,
-    CAT,
-    MONKEY,
-    INVALID
-};
 
-enum animal selectAnimal()
-{
-    int ani;
-    do
-    {
-        printf("0:Dog, 1:Cat, 2:Monkey");
-        scanf("%d", &ani);
-    } while (ani < DOG || ani > INVALID);
-    return ani;
-}
 int main(void)
 {
-    printf("%d", selectAnimal());
+    double a = 2;
+    double b = 3;
+    double c = 2;
+
+
+    printf("%lf\n", c*-4-b+a);
+    printf("%lf\n",c+(1/2.0*b));
+    printf("%lf\n",c*-7-2*b+a);
     return 0;
 }
