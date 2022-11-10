@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define MAX 256
 
@@ -14,18 +15,19 @@ int main(void) {
     }
 
     // ファイル処理をここに書く
-    int people = 0;
-    printf("名簿を追加する人数を教えてください。\n");
-    printf("人数：");
-    scanf("%d", &people);
+    printf("終了するときはquitと入力してください\n");
 
-    for(int i = 0; i < people; i++) {
-        char str[50] = {'\0'};
-        printf("\n名前を入力してください。\n");
-        printf("名前：");
-        scanf("%s", str);
-        sprintf(str, "%s\n", str);
-        fputs(str, fp);
+    while(1) {
+        printf("name? ");
+        scanf("%s",line);
+
+        if(strcmp(line, "quit")==0){
+            break;
+        }
+
+        fprintf(fp, "\n%s", line);
+        printf("%s\n",line);
+        
     }
 
 
