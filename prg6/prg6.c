@@ -16,8 +16,7 @@ int main(void) {
     // ファイル処理をここに書く
     for(int i = 0; i < 100; i++) {
         char str[10] = {'\0'};
-        sprintf(str, "%d\n", i);
-        fputs(str, fp);
+        fprintf(fp, "%d\n", i);
     }
 
     fclose(fp);

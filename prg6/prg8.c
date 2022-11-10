@@ -25,8 +25,7 @@ int main(void) {
         }
         if(flag == 0) {
             char str[10] = {'\0'};
-            sprintf(str, "%d\n", i);
-            fputs(str, fp);
+            fprintf(fp, "%d\n", i);
         }
     }
 

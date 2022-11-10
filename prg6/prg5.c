@@ -15,7 +15,7 @@ int main(void) {
 
     // ファイル処理をここに書く
     while (fgets(line, MAX, fp) != NULL) {
-        printf("%s¥n", line);
+        printf("%s", line);
     }
 
     fclose(fp);
