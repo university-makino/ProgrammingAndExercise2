@@ -8,4 +8,3 @@ kondo
 saito 
 naito 
 sudo 
-muto
