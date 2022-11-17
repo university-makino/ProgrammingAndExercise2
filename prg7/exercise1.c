@@ -45,14 +45,6 @@ int main(int argc, const char* argv[]){
     printf("平均点 = %f\n",average);
     printf("標準偏差 = %f\n",standardDeviation);
 
-    // 確率
-    double probability = 0.0;
-    probability = (1 / (sqrt(2 * M_PI) * standardDeviation)) * exp(-((50 - average) * (50 - average)) / (2 * standardDeviation * standardDeviation)) * 100;
-
-    printf("50点を取る確率 = %f\n",probability);
-
-
-
 
     free(points);
     free(deviation);
