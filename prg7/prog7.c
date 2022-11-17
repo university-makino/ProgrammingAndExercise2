@@ -14,6 +14,8 @@ int main(int argc, const char* argv[]) {
             break;
         }
 
+        //毎度reallocを呼ぶのはよろしくない。
+        //コピーを続けることによって、データが重くなる。
         pointer = (int*)realloc(pointer, (count + 1) * sizeof(int));
 
         count++;
