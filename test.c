@@ -12,3 +12,6 @@ int main(void)
     printf("%lf\n",c*-7-2*b+a);
     return 0;
 }
+
+
+
