@@ -129,17 +129,6 @@ void printIrisJudgementByAve(Iris *irisAveVersicolor,Iris *irisAveVirginica ,Iri
     return ;
 }
 
-void printIrisJudgementBySample(Iris *irisStdVersicolor,Iris *irisStdVirginica ,Iris *irisStdSetosa , Iris checkIris){
-
-
-    double distanceVersicolor = 0;
-    double distanceVirginica = 0;
-    double distanceSetosa = 0;
-
-    distanceVersicolor = pow((checkIris.sepalLength - irisStdVersicolor->sepalLength)/irisStdVersicolor->sepalLength, 2) + pow((checkIris.sepalWidth - irisStdVersicolor->sepalWidth)/irisStdVersicolor->sepalWidth, 2) + pow((checkIris.petalLength - irisStdVersicolor->petalLength)/irisStdVersicolor->petalLength, 2) + pow((checkIris.petalWidth - irisStdVersicolor->petalWidth)/irisStdVersicolor->petalWidth, 2);
-    distanceVirginica = pow((checkIris.sepalLength - irisStdVirginica->sepalLength)/irisStdVirginica->sepalLength, 2) + pow((checkIris.sepalWidth - irisStdVirginica->sepalWidth)/irisStdVirginica->sepalWidth, 2) + pow((checkIris.petalLength - irisStdVirginica->petalLength)/irisStdVirginica->petalLength, 2) + pow((checkIris.petalWidth - irisStdVirginica->petalWidth)/irisStdVirginica->petalWidth, 2);
-    distanceSetosa = pow((checkIris.sepalLength - irisStdSetosa->sepalLength)/irisStdSetosa->sepalLength, 2) + pow((checkIris.sepalWidth - irisStdSetosa->sepalWidth)/irisStdSetosa->sepalWidth, 2) + pow((checkIris.petalLength - irisStdSetosa->petalLength)/irisStdSetosa->petalLength, 2) + pow((checkIris.petalWidth - irisStdSetosa->petalWidth)/irisStdSetosa->petalWidth,
-
 int main(int argc, const char* argv[]){
 
     Iris lists[MAX];
