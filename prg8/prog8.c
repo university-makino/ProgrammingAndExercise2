@@ -129,9 +129,20 @@ void printIrisJudgementByAve(Iris *irisAveVersicolor,Iris *irisAveVirginica ,Iri
     return ;
 }
 
+void printIrisJudgementBySample(Iris *iris_lists ,int size , Iris checkIris){
+    //　サンプルを用いて、どの種類に属するかを判定する。
+
+    for(int i=0;i<size;i++){
+        
+    }
+
+    return ;
+}
+
 int main(int argc, const char* argv[]){
 
     Iris lists[MAX];
+    int size = 0;
     char line[MAX];  // １⾏分を読み込むための配列
     Iris iris_virginica_list[MAX];
     Iris iris_versicolor_list[MAX];
@@ -150,6 +161,8 @@ int main(int argc, const char* argv[]){
         lists[i] = irisSprit(line);
         i++;
     }
+    // 配列のサイズを取得
+    size = i;
 
     // リストを仕分ける。
     int iris_virginica_count = 0;
@@ -198,10 +211,13 @@ int main(int argc, const char* argv[]){
     Iris irisJudgment3 = {5.6,2.8,4.8,2.0,""};
 
 
-    printf("＝＝＝判定＝＝＝\n");
+    printf("＝＝＝判定1＝＝＝\n");
     printIrisJudgementByAve(&aveVersicolor,&aveVirginica,&aveSetosa,irisJudgment1);
     printIrisJudgementByAve(&aveVersicolor,&aveVirginica,&aveSetosa,irisJudgment2);
     printIrisJudgementByAve(&aveVersicolor,&aveVirginica,&aveSetosa,irisJudgment3);
+
+    // printf("＝＝＝判定2＝＝＝\n");
+    // printIrisJudgementBySample(lists,size ,irisJudgment1);
 
 
 
