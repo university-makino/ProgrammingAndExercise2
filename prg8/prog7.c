@@ -153,8 +153,11 @@ int main(int argc, const char* argv[]){
     Iris aveVersicolor = getIrisAverage(iris_versicolor_list, iris_versicolor_count);
     Iris aveSetosa = getIrisAverage(iris_setosa_list, iris_setosa_count);
 
+    printf("Versicolor\n");
     printIris(aveVersicolor);
+    printf("Virginica\n");
     printIris(aveVirginica);
+    printf("Setosa\n");
     printIris(aveSetosa);
 
     // リストで標準偏差を出す。
@@ -163,8 +166,11 @@ int main(int argc, const char* argv[]){
     Iris stdVersicolor = getIrisStandardDeviation(iris_versicolor_list, iris_versicolor_count);
     Iris stdSetosa = getIrisStandardDeviation(iris_setosa_list, iris_setosa_count);
     
+    printf("Versicolor\n");
     printIris(stdVersicolor);
+    printf("Virginica\n");
     printIris(stdVirginica);
+    printf("Setosa\n");
     printIris(stdSetosa);
 
 

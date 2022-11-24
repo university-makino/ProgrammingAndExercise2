@@ -124,13 +124,18 @@ int main(int argc, const char* argv[]){
     }
 
     // リストで平均を出す。
+    printf("＝＝＝平均＝＝＝\n");
     Iris aveVirginica = getIrisAverage(iris_virginica_list, iris_virginica_count);
     Iris aveVersicolor = getIrisAverage(iris_versicolor_list, iris_versicolor_count);
     Iris aveSetosa = getIrisAverage(iris_setosa_list, iris_setosa_count);
 
+    printf("Versicolor\n");
     printIris(aveVersicolor);
+    printf("Virginica\n");
     printIris(aveVirginica);
+    printf("Setosa\n");
     printIris(aveSetosa);
+
 
     fclose(fp);
 
