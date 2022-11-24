@@ -48,7 +48,10 @@ Iris irisSprit(char *str){
     return iris;
 }
 
-void printIrisAverage(Iris *iris_list, int size){
+Iris printIrisAverage(Iris *iris_list, int size){
+
+    Iris aveIris;
+
     double sepalLength_Average = 0;
     double sepalWidth_Average = 0;
     double petalLength_Average = 0;
@@ -67,8 +70,14 @@ void printIrisAverage(Iris *iris_list, int size){
     petalLength_Average = petalLength_Average/size;
     petalWidth_Average = petalWidth_Average/size;
 
-    printf("virginica: sepalLength: %f, sepalWidth: %f, petalLength: %f, petalWidth: %f\n", sepalLength_Average, sepalWidth_Average, petalLength_Average, petalWidth_Average);
+    // printf("virginica: sepalLength: %f, sepalWidth: %f, petalLength: %f, petalWidth: %f\n", sepalLength_Average, sepalWidth_Average, petalLength_Average, petalWidth_Average);
 
+    aveIris.sepalLength = sepalLength_Average;
+    aveIris.sepalWidth = sepalWidth_Average;
+    aveIris.petalLength = petalLength_Average;
+    aveIris.petalWidth = petalWidth_Average;
+
+    return aveIris;
 }
 
 int main(int argc, const char* argv[]){
@@ -115,10 +124,13 @@ int main(int argc, const char* argv[]){
     }
 
     // リストで平均を出す。
-    printIrisAverage(iris_virginica_list, iris_virginica_count);
-    printIrisAverage(iris_versicolor_list, iris_versicolor_count);
-    printIrisAverage(iris_setosa_list, iris_setosa_count);
+    Iris aveVirginica = printIrisAverage(iris_virginica_list, iris_virginica_count);
+    Iris aveVersicolor = printIrisAverage(iris_versicolor_list, iris_versicolor_count);
+    Iris aveSetosa = printIrisAverage(iris_setosa_list, iris_setosa_count);
 
+    printIris(aveVersicolor);
+    printIris(aveVirginica);
+    printIris(aveSetosa);
 
     fclose(fp);
 
