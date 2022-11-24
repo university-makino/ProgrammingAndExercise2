@@ -104,7 +104,7 @@ Iris getIrisStandardDeviation(Iris *iris_list, int size){
         return stdIris;
 }
 
-void printIrisAveJudgement(Iris *irisAveVersicolor,Iris *irisAveVirginica ,Iris *irisAveSetosa , Iris checkIris){
+void printIrisJudgementByAve(Iris *irisAveVersicolor,Iris *irisAveVirginica ,Iris *irisAveSetosa , Iris checkIris){
     //　平均値を用いて、どの種類に属するかを判定する。
     // https://www.kaggle.com/uciml/iris/discussion/111835
 
@@ -128,6 +128,17 @@ void printIrisAveJudgement(Iris *irisAveVersicolor,Iris *irisAveVirginica ,Iris 
 
     return ;
 }
+
+void printIrisJudgementBySample(Iris *irisStdVersicolor,Iris *irisStdVirginica ,Iris *irisStdSetosa , Iris checkIris){
+
+
+    double distanceVersicolor = 0;
+    double distanceVirginica = 0;
+    double distanceSetosa = 0;
+
+    distanceVersicolor = pow((checkIris.sepalLength - irisStdVersicolor->sepalLength)/irisStdVersicolor->sepalLength, 2) + pow((checkIris.sepalWidth - irisStdVersicolor->sepalWidth)/irisStdVersicolor->sepalWidth, 2) + pow((checkIris.petalLength - irisStdVersicolor->petalLength)/irisStdVersicolor->petalLength, 2) + pow((checkIris.petalWidth - irisStdVersicolor->petalWidth)/irisStdVersicolor->petalWidth, 2);
+    distanceVirginica = pow((checkIris.sepalLength - irisStdVirginica->sepalLength)/irisStdVirginica->sepalLength, 2) + pow((checkIris.sepalWidth - irisStdVirginica->sepalWidth)/irisStdVirginica->sepalWidth, 2) + pow((checkIris.petalLength - irisStdVirginica->petalLength)/irisStdVirginica->petalLength, 2) + pow((checkIris.petalWidth - irisStdVirginica->petalWidth)/irisStdVirginica->petalWidth, 2);
+    distanceSetosa = pow((checkIris.sepalLength - irisStdSetosa->sepalLength)/irisStdSetosa->sepalLength, 2) + pow((checkIris.sepalWidth - irisStdSetosa->sepalWidth)/irisStdSetosa->sepalWidth, 2) + pow((checkIris.petalLength - irisStdSetosa->petalLength)/irisStdSetosa->petalLength, 2) + pow((checkIris.petalWidth - irisStdSetosa->petalWidth)/irisStdSetosa->petalWidth,
 
 int main(int argc, const char* argv[]){
 
@@ -199,9 +210,9 @@ int main(int argc, const char* argv[]){
 
 
     printf("＝＝＝判定＝＝＝\n");
-    printIrisAveJudgement(&aveVersicolor,&aveVirginica,&aveSetosa,irisJudgment1);
-    printIrisAveJudgement(&aveVersicolor,&aveVirginica,&aveSetosa,irisJudgment2);
-    printIrisAveJudgement(&aveVersicolor,&aveVirginica,&aveSetosa,irisJudgment3);
+    printIrisJudgementByAve(&aveVersicolor,&aveVirginica,&aveSetosa,irisJudgment1);
+    printIrisJudgementByAve(&aveVersicolor,&aveVirginica,&aveSetosa,irisJudgment2);
+    printIrisJudgementByAve(&aveVersicolor,&aveVirginica,&aveSetosa,irisJudgment3);
 
 
 
