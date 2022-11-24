@@ -48,7 +48,7 @@ Iris irisSprit(char *str){
     return iris;
 }
 
-Iris printIrisAverage(Iris *iris_list, int size){
+Iris getIrisAverage(Iris *iris_list, int size){
 
     Iris aveIris;
 
@@ -124,9 +124,9 @@ int main(int argc, const char* argv[]){
     }
 
     // リストで平均を出す。
-    Iris aveVirginica = printIrisAverage(iris_virginica_list, iris_virginica_count);
-    Iris aveVersicolor = printIrisAverage(iris_versicolor_list, iris_versicolor_count);
-    Iris aveSetosa = printIrisAverage(iris_setosa_list, iris_setosa_count);
+    Iris aveVirginica = getIrisAverage(iris_virginica_list, iris_virginica_count);
+    Iris aveVersicolor = getIrisAverage(iris_versicolor_list, iris_versicolor_count);
+    Iris aveSetosa = getIrisAverage(iris_setosa_list, iris_setosa_count);
 
     printIris(aveVersicolor);
     printIris(aveVirginica);
