@@ -82,7 +82,8 @@ Iris getIrisAverage(Iris *iris_list, int size){
 }
 
 Iris getIrisStandardDeviation(Iris *iris_list, int size){
-    //
+    //　標準偏差を求める。
+    // https://ai-trend.jp/basic-study/basic/standard-deviation/
     
         Iris aveIris = getIrisAverage(iris_list, size);
     
