@@ -104,7 +104,7 @@ Iris getIrisStandardDeviation(Iris *iris_list, int size){
         return stdIris;
 }
 
-void printIrisJudgement(Iris *irisAveVersicolor,Iris *irisAveVirginica ,Iris *irisAveSetosa , Iris checkIris){
+void printIrisAveJudgement(Iris *irisAveVersicolor,Iris *irisAveVirginica ,Iris *irisAveSetosa , Iris checkIris){
     //　平均値を用いて、どの種類に属するかを判定する。
     // https://www.kaggle.com/uciml/iris/discussion/111835
 
@@ -199,9 +199,9 @@ int main(int argc, const char* argv[]){
 
 
     printf("＝＝＝判定＝＝＝\n");
-    printIrisJudgement(&aveVersicolor,&aveVirginica,&aveSetosa,irisJudgment1);
-    printIrisJudgement(&aveVersicolor,&aveVirginica,&aveSetosa,irisJudgment2);
-    printIrisJudgement(&aveVersicolor,&aveVirginica,&aveSetosa,irisJudgment3);
+    printIrisAveJudgement(&aveVersicolor,&aveVirginica,&aveSetosa,irisJudgment1);
+    printIrisAveJudgement(&aveVersicolor,&aveVirginica,&aveSetosa,irisJudgment2);
+    printIrisAveJudgement(&aveVersicolor,&aveVirginica,&aveSetosa,irisJudgment3);
 
 
 
