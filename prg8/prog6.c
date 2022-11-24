@@ -122,7 +122,5 @@ int main(int argc, const char* argv[]){
 
     fclose(fp);
 
-    // printIris(iris);
-
     return 0;
 }
