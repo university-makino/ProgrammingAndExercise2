@@ -71,7 +71,7 @@ int main(int argc, const char* argv[]){
         ){
             // ASCIIコード表を元に、ABCDを出すため
             if(earthquakeList[j].earthquakeIntensity >= '4'){
-                printEarthquake(earthquakeList[j]);
+                // printEarthquake(earthquakeList[j]);
                 count++;
             }
         }

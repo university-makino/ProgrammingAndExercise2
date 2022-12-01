@@ -53,42 +53,52 @@ int main(int argc, const char* argv[]){
     }
 
     // ファイル処理をここに書く
-    int i=0;
+    int listIndex = 0;
     while (fgets(line, MAX, fp) != NULL) {
-        earthquakeList[i] = createEarthquake(line);
+        earthquakeList[listIndex] = createEarthquake(line);
         
         // メモリーを確保する（動的に）
-        earthquakeList = (Earthquake *)realloc(earthquakeList, (i+2) * sizeof(Earthquake));
-        i++;
+        earthquakeList = (Earthquake *)realloc(earthquakeList, (listIndex+2) * sizeof(Earthquake));
+        listIndex++;
     }
 
     // ここからデータを操作する。
-
-    int dateOfEachMonthList [12] = {31,28,31,30,31,30,31,31,30,31,30,31};
-    int earthquakeCountList [365] = {0};
+    int dateOfEachMonthList[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
+    int earthquakeCountList[365] = {0};
     int currentMonth = 1;
     int currentDay = 1;
     int dayCount = 0;
 
-    for(int j=0;j<i;j++){
-
-        if(currentMonth == earthquakeList[j].month){
-            if(currentDay == earthquakeList[j].day){
+    for(int i=0; i<listIndex; i++){
+        if(earthquakeList[i].month == currentMonth){
+            if(earthquakeList[i].day == currentDay){
                 earthquakeCountList[dayCount]++;
             }else{
                 currentDay++;
                 dayCount++;
+                earthquakeCountList[dayCount]++;
+
             }
-        }else if(currentDay == dateOfEachMonthList[currentMonth-1]){
-            currentMonth++;
-            currentDay = 0;
         }else{
-            currentDay++;
+            currentMonth++;
+            currentDay = 1;
             dayCount++;
         }
     }
 
-    double ave = i / 365.0;
+    // 各日付の確認用
+
+    // int index = 0;
+    // for(int j=0;j<12;j++){
+    //     for(int k = 0;k < dateOfEachMonthList[j];k++){
+    //         if(earthquakeCountList[index] != 0){
+    //             printf("%d月%d日: %d\n", j+1, k+1, earthquakeCountList[index]);
+    //         }
+    //         index++;
+    //     }
+    // }
+
+    double ave = listIndex / 365.0;
 
     //SD
     double SD = 0;
@@ -99,14 +109,7 @@ int main(int argc, const char* argv[]){
     SD = sqrt(SD);
     printf("SD: %f\n", SD);
 
-    // 各日付の確認用
-    // int index = 0;
-    // for(int j=0;j<12;j++){
-    //     for(int k=0;k<dateOfEachMonthList[j];k++){
-    //         printf("%d月%d日: %d\n", j+1, k+1, earthquakeCountList[index]);
-    //         index++;
-    //     }
-    // }
+    
 
     printf("average: %f\n", ave);
     

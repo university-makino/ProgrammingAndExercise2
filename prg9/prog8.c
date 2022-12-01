@@ -78,7 +78,7 @@ int main(int argc, const char* argv[]){
             earthquakeList[j].earthquakeIntensity >= '4'
         ){
             // ASCIIコード表を元に、ABCDを出すため
-            printEarthquake(earthquakeList[j]);
+            // printEarthquake(earthquakeList[j]);
             fprintf(outputFile, "%d,%d,%d,%f,%f,%c\n", earthquakeList[j].year, earthquakeList[j].month, earthquakeList[j].day, earthquakeList[j].latitude, earthquakeList[j].longitude, earthquakeList[j].earthquakeIntensity);
         }
     }
