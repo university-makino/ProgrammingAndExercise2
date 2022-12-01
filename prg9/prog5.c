@@ -10,11 +10,11 @@ typedef struct earthquake{
     int day;
     double latitude;
     double longitude;
-    double earthquakeIntensity;
+    char earthquakeIntensity;
 }Earthquake;
 
 void printEarthquake(Earthquake earthquake){
-    printf("year: %d, month: %d, day: %d, latitude: %f, longitude: %f, earthquakeIntensity: %f\n", earthquake.year, earthquake.month, earthquake.day, earthquake.latitude, earthquake.longitude, earthquake.earthquakeIntensity);
+    printf("year: %d, month: %d, day: %d, latitude: %f, longitude: %f, earthquakeIntensity: %c\n", earthquake.year, earthquake.month, earthquake.day, earthquake.latitude, earthquake.longitude, earthquake.earthquakeIntensity);
     return ;
 }
 
@@ -33,7 +33,7 @@ Earthquake createEarthquake(char date[MAX]){
     pointer = strtok(NULL, ",");
     earthquake1.longitude = atof(pointer);
     pointer = strtok(NULL, ",");
-    earthquake1.earthquakeIntensity = atof(pointer);
+    earthquake1.earthquakeIntensity = pointer[0];
 
     return earthquake1;
 }
@@ -63,19 +63,18 @@ int main(int argc, const char* argv[]){
 
     // ここからデータを操作する。
 
+    int earthquakeIntensityCount[10] = {0};
     for(int j=0;j<i;j++){
-        if(earthquakeList[j].month == 3 && earthquakeList[j].day == 11 && earthquakeList[j].earthquakeIntensity >= 4.0){
-            printEarthquake(earthquakeList[j]);
+        if(earthquakeList[j].month == 3 && earthquakeList[j].day == 11){
+
+            // ASCIIコード表を元に、ABCDを出すため
+            if(earthquakeList[j].earthquakeIntensity >= '4'){
+                printEarthquake(earthquakeList[j]);
+            }
         }
     }
     
-
-
-
-
-
-
-
+    
     free(earthquakeList);
     fclose(fp);
 
