@@ -63,17 +63,21 @@ int main(int argc, const char* argv[]){
 
     // ここからデータを操作する。
 
-    int earthquakeIntensityCount[10] = {0};
+    int count = 0;
     for(int j=0;j<i;j++){
-        if(earthquakeList[j].month == 3 && earthquakeList[j].day == 11){
-
+        if(
+            (earthquakeList[j].month >= 3 && earthquakeList[j].day >= 11) ||
+            (earthquakeList[j].month >= 4 && earthquakeList[j].day >= 1)
+        ){
             // ASCIIコード表を元に、ABCDを出すため
             if(earthquakeList[j].earthquakeIntensity >= '4'){
                 printEarthquake(earthquakeList[j]);
+                count++;
             }
         }
     }
-    
+
+    printf("3/11の震度4以上の地震回数: %d\n", count);
     
     free(earthquakeList);
     fclose(fp);
