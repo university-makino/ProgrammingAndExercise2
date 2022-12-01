@@ -77,13 +77,27 @@ int main(int argc, const char* argv[]){
         }
     }
 
-    for(int j = 1; j < 16; j++){
-        if(j < 10){
-            printf("%d: %d\n", j, earthquakeIntensityCount[j]);
-        }else{
-            printf("%c: %d\n", j + 'A' - 10, earthquakeIntensityCount[j]);
-        }
-    }
+    //16進数で出力する。
+
+    // for(int j = 1; j < 16; j++){
+    //     if(j < 10){
+    //         printf("%d: %d\n", j, earthquakeIntensityCount[j]);
+    //     }else{
+    //         printf("%c: %d\n", j + 'A' - 10, earthquakeIntensityCount[j]);
+    //     }
+    // }
+
+    // printfでベタ打ちする
+
+    printf("震度1: %d\n", earthquakeIntensityCount[1]);
+    printf("震度2: %d\n", earthquakeIntensityCount[2]);
+    printf("震度3: %d\n", earthquakeIntensityCount[3]);
+    printf("震度4: %d\n", earthquakeIntensityCount[4]);
+    printf("震度5弱: %d\n", earthquakeIntensityCount[10]);
+    printf("震度5強: %d\n", earthquakeIntensityCount[11]);
+    printf("震度6弱: %d\n", earthquakeIntensityCount[12]);
+    printf("震度6強: %d\n", earthquakeIntensityCount[13]);
+    printf("震度7: %d\n", earthquakeIntensityCount[7]);
 
 
     free(earthquakeList);
