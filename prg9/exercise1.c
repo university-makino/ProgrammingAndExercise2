@@ -69,10 +69,10 @@ int main(int argc, const char* argv[]){
         exit(0);
     }
 
-    // longitude sort
-    for (int i=0; i<index; i++) {
-        for (int j=i+1; j<index; j++) {
-            if (earthquakeList[i].longitude > earthquakeList[j].longitude) {
+    // latitudeの値でソートする
+    for(int i=0; i<index; i++){
+        for(int j=i+1; j<index; j++){
+            if(earthquakeList[i].latitude > earthquakeList[j].latitude){
                 Earthquake temp = earthquakeList[i];
                 earthquakeList[i] = earthquakeList[j];
                 earthquakeList[j] = temp;
