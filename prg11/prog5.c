@@ -86,13 +86,32 @@ int main(int argc, const char* argv[]){
     // 配列のサイズを取得
     int size = i;
 
+    //配列をランダムにする
     randomize(lists,size);
+    // for(int i = 0; i < size; i++){
+    //     printIris(lists[i]);
+    // }
+
+    //2種類に分ける
+    Iris array_learn[120];
+    Iris array_test[30];
 
     for(int i = 0; i < size; i++){
-        printIris(lists[i]);
+        if(i < 120){
+            array_learn[i] = lists[i];
+        }else{
+            array_test[i-120] = lists[i];
+        }
+    }
+    printf("array_learn\n");
+    for(int i = 0; i < 120; i++){
+        printIris(array_learn[i]);
+    }
+    printf("array_test\n");
+    for(int i = 0; i < 30; i++){
+        printIris(array_test[i]);
     }
 
     fclose(fp);
-
     return 0;
 }
