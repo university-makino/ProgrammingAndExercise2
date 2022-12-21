@@ -122,10 +122,43 @@ int main(int argc, const char* argv[]){
         }
     }
 
-    for(int i = 0; i < DIVISION; i++){
-        printf("irisList[%d]\n", i);
-        for(int j = 0; j < n; j++){
-            printIris(irisList[i][j]);
+    // for(int i = 0; i < DIVISION; i++){
+    //     printf("irisList[%d]\n", i);
+    //     for(int j = 0; j < n; j++){
+    //         printIris(irisList[i][j]);
+    //     }
+    // }
+
+
+    for (int k=0; k < DIVISION; k++){
+        Iris array_test[size/DIVISION];
+        Iris array_learn[size - (size/DIVISION)];
+
+        //テスト用の配列を作成
+        for(int i=0; i < size/DIVISION ;i++){
+            array_test[i] = irisList[k][i];
+        }
+
+        //学習用の配列を作成
+        int index = 0;
+        for(int i=0; i < DIVISION ;i++){
+            if(i != k){
+                for(int j=0; j < size/DIVISION ;j++){
+                    array_learn[index] = irisList[i][j];
+                    index++;
+                }
+            }
+        }
+
+        //出力
+        printf("\ntestDate k = %d\n\n", k);
+        for(int i=0; i < size/DIVISION ;i++){
+            printIris(array_test[i]);
+        }
+
+        printf("\nlearnDate k = %d\n\n", k);
+        for(int i=0; i < size - (size/DIVISION) ;i++){
+            printIris(array_learn[i]);
         }
     }
 
