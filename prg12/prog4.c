@@ -10,8 +10,7 @@ typedef struct elem{
 
 
 void printList(Elem *root);
-void addElem(Elem *root, int num);
-Elem* addElemFirst(Elem *root, int num);
+Elem* addElem(Elem *root, int num);
 void freeList(Elem *root);
 
 
@@ -23,25 +22,15 @@ void printList(Elem *root){
     }
 }
 
-void addElem(Elem *root, int num){
-    Elem *p = root;
-    while(p->next != NULL){
-        p = p->next;
-    }
+Elem* addElem(Elem *root, int num){
+    // 関数の処理が終了しても消えないようにマロックしないといけない。
     Elem *newElem = (Elem *)malloc(sizeof(Elem));
-    newElem->num = num;
-    newElem->next = NULL;
-    p->next = newElem;
-
-
-}
-
-Elem* addElemFirst(Elem *root, int num){
-    Elem *newElem = (Elem *)malloc(sizeof(Elem));
+    //データ部とポインタ部を初期化
     newElem->num = num;
     newElem->next = root;
-    root = newElem;
-    return root;
+
+    return newElem;
+
 }
 
 void freeList(Elem *root){
@@ -57,14 +46,11 @@ int main(int argc, const char* argv[]){
 
     Elem *root = NULL;
 
-    // 先頭に追加
-    root = addElemFirst(root, 10);
-
-    // 末尾に追加
-    addElem(root, 40);
-    addElem(root, 30);
-    addElem(root, 20);
-    addElem(root, 50);
+    root = addElem(root, 10);
+    root = addElem(root, 40);
+    root = addElem(root, 30);
+    root = addElem(root, 20);
+    root = addElem(root, 50);
 
     // 出力
     printList(root);
