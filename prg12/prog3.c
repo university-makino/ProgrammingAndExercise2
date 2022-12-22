@@ -16,36 +16,27 @@ void printList(Elem *root){
     }
 }
 
-void addElem(Elem *root, int num){
-    Elem *p = root;
-    while(p->next != NULL){
-        p = p->next;
-    }
+Elem* addElem(Elem *root, int num){
+    // 関数の処理が終了しても消えないようにマロックしないといけない。
     Elem *newElem = (Elem *)malloc(sizeof(Elem));
+    //データ部とポインタ部を初期化
     newElem->num = num;
-    newElem->next = NULL;
-    p->next = newElem;
+    newElem->next = root;
+
+    return newElem;
+
 }
 
 int main(int argc, const char* argv[]){
 
     Elem *root = NULL;
 
-    Elem l1 = {10 , root};
-    root = &l1;
-    Elem l2 = {20 , root};
-    root = &l2;
-    Elem l3 = {30 , root};
-    root = &l3;
+    root = addElem(root, 40);
+    root = addElem(root, 30);
+    root = addElem(root, 20);
+    root = addElem(root, 10);
 
-    printf("先頭に挿入のみ\n");
     printList(root);
-
-    addElem(root, 40);
-
-    printf("末尾に挿入\n");
-    printList(root);
-
 
     return 0;
 }
