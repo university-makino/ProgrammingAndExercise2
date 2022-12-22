@@ -90,7 +90,7 @@ Elem* addElem(Elem *root, int num){
     // 場合わけをきれいにする。
     if(prev == NULL){
         //空っぽだった場合は先頭に追加
-        newElem->next = NULL;
+        newElem->next = current;
         return newElem;
     }else{
         //prevとcurrentの間に追加

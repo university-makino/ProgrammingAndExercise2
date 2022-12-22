@@ -13,7 +13,6 @@ typedef struct elem{
 
 void printList(Elem *root);
 Elem* addElem(Elem *root, int num);
-Elem* addElemFirst(Elem *root, int num);
 void freeList(Elem *root);
 void sortElem(Elem *root);
 void deleteElem(Elem *root, int num);
@@ -36,11 +35,7 @@ Elem* fileRead(Elem *root){
     char line[MAX];
     while (fgets(line, MAX, fp) != NULL) {
         int num = atoi(line);
-        if(p == NULL){
-            p = addElemFirst(p, num);
-        }else{
-            addElem(p, num);
-        }
+        p = addElem(p, num);
     }
 
     fclose(fp);
@@ -114,29 +109,33 @@ void printList(Elem *root){
 }
 
 Elem* addElem(Elem *root, int num){
-    Elem *p = root;
-    while(p->next != NULL){
-        p = p->next;
+
+    Elem *current = root;
+    Elem *prev = NULL;
+
+    while(current != NULL){
+        if(current->num > num){
+            break;
+        }
+        prev = current;
+        current = current->next;
     }
-    Elem *newElem = (Elem *)malloc(sizeof(Elem));
+
+    Elem *newElem = (Elem*)malloc(sizeof(Elem));
     newElem->num = num;
-    newElem->next = NULL;
-    p->next = newElem;
 
-    sortElem(root);
-
-    return root;
-
+    // 場合わけをきれいにする。
+    if(prev == NULL){
+        //空っぽだった場合は先頭に追加
+        newElem->next = current;
+        return newElem;
+    }else{
+        //prevとcurrentの間に追加
+        newElem->next = current;
+        prev->next = newElem;
+        return root;
+    }
 }
-
-Elem* addElemFirst(Elem *root, int num){
-    Elem *newElem = (Elem *)malloc(sizeof(Elem));
-    newElem->num = num;
-    newElem->next = root;
-    root = newElem;
-    return root;
-}
-
 void freeList(Elem *root){
     Elem *p = root;
     while(p != NULL){
@@ -163,11 +162,7 @@ int main(int argc, const char* argv[]){
         scanf("%s %d", str ,&num);
         
         if(strcmp(str, "add") == 0){
-            if(root == NULL){
-                root = addElemFirst(root, num);
-            }else{
-                addElem(root, num);
-            }
+            root = addElem(root, num);
         }else if(strcmp(str, "delete") == 0){
             deleteElem(root, num);
         }else if(strcmp(str, "print") == 0){
