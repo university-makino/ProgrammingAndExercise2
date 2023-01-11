@@ -152,7 +152,7 @@ int main(int argc, const char* argv[]){
     root = fileRead(root);
 
     //対話型配列操作
-    printf("コマンドが不明な場合は [help 0] を入力してください\n");
+    printf("コマンドが不明な場合は [help] を入力してください\n");
     while(1){
         char input[10];
         int number = 0 ;
