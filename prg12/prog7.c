@@ -20,9 +20,9 @@ void printHelp(){
     printf("コマンド表\n\n");
     printf("add 数値: 数値をリストに追加する\n");
     printf("delete 数値: 数値をリストから削除する\n");
-    printf("print 0: リストの内容を表示する\n");
-    printf("exit 0: プログラムを終了する\n");
-    printf("help 0: コマンド表を表示する\n");
+    printf("print: リストの内容を表示する\n");
+    printf("exit: プログラムを終了する\n");
+    printf("help: コマンド表を表示する\n");
     printf("\n");
 }
 
@@ -112,28 +112,40 @@ int main(int argc, const char* argv[]){
 
     Elem *root = NULL;
 
-    printf("コマンドが不明な場合は [help 0] を入力してください\n");
+    printf("コマンドが不明な場合は [help] を入力してください\n");
 
     while(1){
-        int num = 0;
-        char str[100] = {0};
+        char input[10];
+        int number = 0 ;
 
-        printf("コマンドを入力してください:");
-        scanf("%s %d", str ,&num);
+        printf("入力 ");
+        //%[^\n]は改行が入るまで全てのデータを取得
+        scanf("%[^\n]",input);
         
-        if(strcmp(str, "add") == 0){
-            root = addElem(root, num);
-        }else if(strcmp(str, "delete") == 0){
-            deleteElem(root, num);
-        }else if(strcmp(str, "print") == 0){
+        char *token = strtok(input," ");
+        char *command = token;
+        token = strtok(NULL," ");
+        char *splitNumber = token;
+
+        if(splitNumber!=NULL){
+            number=atoi(splitNumber);
+        }
+        
+        if(strcmp(command, "add") == 0){
+            root = addElem(root, number);
+        }else if(strcmp(command, "delete") == 0){
+            deleteElem(root, number);
+        }else if(strcmp(command, "print") == 0){
             printList(root);
-        }else if(strcmp(str, "exit") == 0){
+        }else if(strcmp(command, "exit") == 0){
             break;
-        }else if(strcmp(str, "help") == 0){
+        }else if(strcmp(command, "help") == 0){
             printHelp();
         }else{
             printf("コマンドが不明です\n");
         }
+
+        getchar();
     }
 
     freeList(root); 
