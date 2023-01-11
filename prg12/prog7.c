@@ -13,7 +13,7 @@ void printList(Elem *root);
 Elem* addElem(Elem *root, int num);
 void freeList(Elem *root);
 void sortElem(Elem *root);
-void deleteElem(Elem *root, int num);
+Elem* deleteElem(Elem *root, int num);
 void printHelp();
 
 void printHelp(){
@@ -26,22 +26,21 @@ void printHelp(){
     printf("\n");
 }
 
-void deleteElem(Elem *root, int num){
-    Elem *p = root;
-    Elem *prev = NULL;
-    while(p != NULL){
-        if(p->num == num){
-            if(prev == NULL){
-                root = p->next;
-            }else{
-                prev->next = p->next;
-            }
-            free(p);
-            break;
-        }
-        prev = p;
-        p = p->next;
+Elem* deleteElem(Elem *root, int delnum){
+    Elem *prev=NULL;
+    Elem *current=root;
+    while(current!=NULL){
+        if(current->num==delnum)break;
+        prev=current;
+        current=current->next;
     }
+    if(prev==NULL){//先頭の要素を消そうとするとき
+        root=current->next;
+    }else{
+        prev->next=current->next;
+    }
+    free(current);
+    return root;
 }
 
 void sortElem(Elem *root){
@@ -134,7 +133,7 @@ int main(int argc, const char* argv[]){
         if(strcmp(command, "add") == 0){
             root = addElem(root, number);
         }else if(strcmp(command, "delete") == 0){
-            deleteElem(root, number);
+            root = deleteElem(root, number);
         }else if(strcmp(command, "print") == 0){
             printList(root);
         }else if(strcmp(command, "exit") == 0){
