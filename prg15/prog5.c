@@ -10,6 +10,12 @@ void dispTrial(Trial *t){
     printf("speed: %d, distance: %d\n", t->speed, t->distance);
 }
 
+int estimationFunction(int distance){
+
+    //y=2x
+    return 2*distance;
+}
+
 int main(int argc, const char* argv[]){
 
     Trial trialList[100] = {0};
@@ -36,10 +42,17 @@ int main(int argc, const char* argv[]){
         inputIndex++;
     }
 
-    // 出力部分
+    // 推定部分
     for(int i = 0; i < inputIndex; i++){
-        dispTrial(&trialList[i]);
+
+        int estimatedDistance = estimationFunction(trialList[i].speed);
+
+        int error = estimatedDistance - trialList[i].distance;
+
+        printf("speed: %d, distance: %d, 推定: %d, 誤差: %d\n", trialList[i].speed, trialList[i].distance, estimatedDistance, error);
     }
+
+    
 
     return 0;
 }
