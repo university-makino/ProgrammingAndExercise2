@@ -45,11 +45,11 @@ int main(int argc, const char* argv[]){
     // 推定部分
     for(int i = 0; i < inputIndex; i++){
 
-        int estimatedDistance = estimationFunction(trialList[i].speed);
+        double estimatedDistance = estimationFunction(trialList[i].speed);
 
-        int error = estimatedDistance - trialList[i].distance;
+        double error = estimatedDistance - trialList[i].distance;
 
-        printf("speed: %d, distance: %d, 推定: %d, 誤差: %d\n", trialList[i].speed, trialList[i].distance, estimatedDistance, error);
+        printf("speed: %d, distance: %d, 推定: %f, 誤差: %f\n", trialList[i].speed, trialList[i].distance, estimatedDistance, error);
     }
 
     
