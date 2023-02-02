@@ -60,7 +60,7 @@ int main(int argc, const char* argv[]){
 
         double estimatedDistance = estimationFunction(a,trialList[i].speed);
 
-        double error = estimatedDistance - trialList[i].distance;
+        double error = trialList[i].distance - estimatedDistance ;
 
         printf("speed: %d, distance: %d, 推定: %f, 誤差: %f\n", trialList[i].speed, trialList[i].distance, estimatedDistance, error);
 
