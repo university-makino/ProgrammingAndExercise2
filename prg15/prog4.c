@@ -36,11 +36,6 @@ int main(int argc, const char* argv[]){
         inputIndex++;
     }
 
-    // 出力部分
-    for(int i = 0; i < inputIndex; i++){
-        dispTrial(&trialList[i]);
-    }
-
     int minSpeed = 2147483647;
     int maxSpeed = 0;
     int minDistance = 2147483647;
